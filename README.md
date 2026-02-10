@@ -11,7 +11,7 @@ Your mission is to **refactor and improve this application** to demonstrate your
 ### Time Expectation
 **3-4 hours** - We respect your time. Focus on the changes you think are most impactful rather than trying to perfect everything.
 
-## 🎯 There's No Single "Right" Answer
+## 🎯 What We're Looking For
 
 We want to see:
 - **How you identify problems** - What issues do you spot in the codebase?
@@ -19,6 +19,8 @@ We want to see:
 - **How you think about trade-offs** - What decisions do you make and why?
 - **Your approach to code organization** - How do you structure a maintainable codebase?
 - **Your decision-making process** - How do you balance perfection with pragmatism?
+-**Feel free to change anything:** - You have complete freedom to modify the design, restructure the code, change the architecture, add/remove features, or take any approach you think is best. Everything is on the table!
+- **We're NOT Looking For** - You don't need to deliver a pixel-perfect design The UI is intentionally simple
 
 ## 📦 Getting Started
 
@@ -67,20 +69,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 1. **Create your own repository** - Clone this code and push to your own GitHub repository
 2. **Set up your own CoinGecko API key** - Follow setup instructions above
 3. **Make your improvements** - Refactor the code according to your priorities
-4. **Document your changes** in a `SOLUTION.md` file:
-   - What problems did you identify?
-   - What changes did you make and why?
-   - What trade-offs did you consider?
-   - What would you do with more time?
-   - Any assumptions you made?
-5. **Send us the link** to your repository when you're done
-
-## ⚠️ What We're NOT Looking For
-
-- **Pixel-perfect design changes** - The UI is intentionally simple
-- **New features** - Focus on improving what's there
-- **Complete rewrites from scratch** - Build on the existing codebase
-- **Over-engineering** - Balance improvement with pragmatism
+4. **Send us the link** to your repository when you're done
 
 ## 🤔 Questions?
 
