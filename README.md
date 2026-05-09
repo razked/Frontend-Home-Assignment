@@ -1,84 +1,123 @@
-# 🚀 Crypto Dashboard Refactoring Challenge
+# 🚀 Crypto Dashboard Coding Challenge
 
 ## Welcome!
 
-Thank you for taking the time to complete this coding challenge. This repository contains a working cryptocurrency dashboard built with Next.js, TypeScript, and the CoinGecko API. While the application is functional and visually appealing, the codebase has significant room for improvement.
+Thank you for taking the time to complete this coding challenge. This repository contains a working cryptocurrency dashboard built with Next.js, TypeScript, and the CoinGecko API. The application is functional, but the codebase has significant room for improvement — and the architecture stops at the browser fetching a public API directly.
 
-## 📋 The Task
+The challenge has **two parts**:
 
-Your mission is to **refactor and improve this application** to demonstrate your senior-level software engineering skills.
+- **Part 1 — Frontend Refactor:** turn the existing codebase into something you'd be happy to inherit.
+- **Part 2 — Fullstack Extension:** introduce caching and a backend data layer, with the public API as a fallback.
 
-### Time Expectation
-**3-4 hours** - We respect your time. Focus on the changes you think are most impactful rather than trying to perfect everything.
+You can submit Part 1 alone, or Part 1 + Part 2. Part 2 is where we expect senior candidates to spend most of their time thinking about architecture and trade-offs.
+
+## ⏱️ Time Expectation & AI Tools
+
+We assume you will use AI assistants (Cursor, Claude Code, Copilot, etc.) — please do. We are evaluating your **judgment, prioritization, and the quality of what you ship**, not your typing speed. Because of that, we've sized the tasks larger than they would be without AI help:
+
+- **Part 1:** ~3–4 hours of focused work
+- **Part 2:** ~4–6 hours of focused work
+
+Don't try to perfect everything. Focus on what you think is most impactful and document the trade-offs you made — a short `NOTES.md` works great.
 
 ## 🎯 What We're Looking For
 
-We want to see:
-- **How you identify problems** - What issues do you spot in the codebase?
-- **What you prioritize** - Which improvements matter most and why?
-- **How you think about trade-offs** - What decisions do you make and why?
-- **Your approach to code organization** - How do you structure a maintainable codebase?
-- **Your decision-making process** - How do you balance perfection with pragmatism?
--**Feel free to change anything:** - You have complete freedom to modify the design, restructure the code, change the architecture, add/remove features, or take any approach you think is best. Everything is on the table!
-- **We're NOT Looking For** - You don't need to deliver a pixel-perfect design The UI is intentionally simple
+- **How you identify problems** — what issues do you spot in the codebase?
+- **What you prioritize** — which improvements matter most and why?
+- **How you think about trade-offs** — what decisions do you make and why?
+- **Your approach to code organization** — how do you structure a maintainable codebase?
+- **Your decision-making process** — how do you balance perfection with pragmatism?
+- **Architectural reasoning (Part 2)** — can you choose the right tool, the right shape, and explain why?
 
-## 📦 Getting Started
-
-### 1. Get Your CoinGecko API Key (Free)
-
-This project uses the CoinGecko API. You'll need a free API key:
-
-1. Go to [CoinGecko API](https://www.coingecko.com/en/api/pricing)
-2. Click **"Get Your Free API Key"**
-3. Sign up for a free account (no credit card required)
-4. Go to your **Developer Dashboard**
-5. Copy your **Demo API Key**
-
-### 2. Setup Environment Variables
-
-```bash
-# Copy the example env file
-cp .env.local.example .env.local
-
-# Edit .env.local and add your API key
-NEXT_PUBLIC_COINGECKO_API_KEY=your_api_key_here
-```
-
-### 3. Installation
-```bash
-npm install
-```
-
-### 4. Development
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Tech Stack
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: shadcn/ui
-- **Charts**: Recharts
-- **API**: CoinGecko API (free, no authentication required)
-
-## 📝 Deliverables
-
-1. **Create your own repository** - Clone this code and push to your own GitHub repository
-2. **Set up your own CoinGecko API key** - Follow setup instructions above
-3. **Make your improvements** - Refactor the code according to your priorities
-4. **Send us the link** to your repository when you're done
-
-## 🤔 Questions?
-
-If you have questions about requirements or need clarification, please reach out. We're happy to help!
-
-## 🎉 Good Luck!
-
-We're excited to see your approach to this challenge. Remember: we're more interested in your thinking process and decision-making than in achieving perfection.
+You have **complete freedom** to modify the design, restructure the code, change the architecture, or add/remove features. The UI is intentionally simple — we are not looking for pixel-perfect design.
 
 ---
 
-**Data Attribution**: Cryptocurrency data provided by [CoinGecko API](https://www.coingecko.com/)
+## 📦 Getting Started
+
+### 1. Get a CoinGecko API Key (Free)
+
+1. Go to [CoinGecko API](https://www.coingecko.com/en/api/pricing)
+2. Click **"Get Your Free API Key"** and sign up (no credit card required)
+3. Copy your **Demo API Key** from the Developer Dashboard
+
+### 2. Set Up Environment
+
+Create a `.env.local` file in the project root:
+
+```
+NEXT_PUBLIC_COINGECKO_API_KEY=your_api_key_here
+```
+
+### 3. Install & Run
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+### Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI:** shadcn/ui
+- **Charts:** Recharts
+- **Data:** CoinGecko API
+
+---
+
+## Part 1 — Frontend Refactor
+
+Refactor the existing codebase. Define what "better" means here, and demonstrate it. We're far more interested in *what you choose to change and why* than in covering any particular set of fixes.
+
+**Deliverable:** the same app, refactored. A short note on what you changed and why is appreciated.
+
+---
+
+## Part 2 — Fullstack Extension
+
+Currently the browser calls CoinGecko directly on every page load, every refresh, and every chart tab switch. That's fine for a demo and bad for everything else. In this part you'll design the data layer that should sit between the UI and the public API.
+
+### 2a — Caching
+
+**Assume the underlying market data is refreshed at most once every 24 hours.** Given that cadence:
+
+1. **Identify** which caching layers make sense for this app. Don't add layers that don't earn their keep at a 24-hour refresh rate.
+2. **Justify** each choice in a short writeup — what it solves, what it costs, and what could go wrong (stale data on the refresh-day boundary, cache stampedes, busting strategy, etc.).
+3. **Implement at least one layer end-to-end** so we can see the pattern you'd actually use in production.
+
+### 2b — Backend Data Layer
+
+The dashboard should read primarily from a **database you control**, falling back to the live CoinGecko API only when a coin is missing from the DB. You do **not** need to build the periodic ingestion job — assume some external worker populates the DB on its 24-hour schedule.
+
+We want to see your thinking on:
+
+- **DB choice** — what database, and why, for this workload?
+- **Schema** — how you model the data.
+- **Indexing** — which queries you're optimizing for, and how the indexes support them.
+- **Read API** — the shape of the queries / endpoints the frontend calls.
+- **Fallback path** — when a coin is requested that isn't in the DB, the backend should fetch it live from CoinGecko, return it to the client, and (optionally) write it back. The code should make swapping or extending the data source clean.
+
+**Implementation expectations:** a working backend with a real DB. Seed data can be scripted from CoinGecko once and committed — no live ingestion required.
+
+**Deliverable:** working code plus a short `NOTES.md` walking us through your choices for the bullets above. The writeup matters as much as the code here.
+
+---
+
+## 📝 Submission
+
+1. Push to your own GitHub repository (public, or invite us as collaborators)
+2. Include setup instructions and how to provide a CoinGecko API key
+3. Include a `NOTES.md` covering your trade-offs and what you'd do with more time
+4. Send us the link
+
+## 🤔 Questions?
+
+Reach out anytime. We'd rather answer a clarifying question than have you guess.
+
+---
+
+**Data Attribution:** Cryptocurrency data provided by [CoinGecko API](https://www.coingecko.com/)
