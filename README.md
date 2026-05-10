@@ -61,7 +61,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## The Challenge
 
-Take this app from "demo" to something you'd be happy to inherit. That covers both the code and the architecture underneath it. We treat frontend and backend as one project, not two — decisions on either side should be coherent with each other.
+Take this app from "demo" to something you'd be happy to inherit — both the code and the architecture underneath it. Decisions on the frontend and the data layer should be coherent with each other.
 
 A few constraints shape your choices, but how you address them is up to you:
 
@@ -70,8 +70,6 @@ A few constraints shape your choices, but how you address them is up to you:
 2. **DB-backed reads.** The app should read primarily from a database you control. Live calls to CoinGecko should happen only as a fallback when a coin is not present in the database. You do not need to build the periodic ingestion job — assume an external worker writes to the DB on its own schedule. Seed data, scripted from CoinGecko once and committed, is fine.
 
 3. **Read latency.** As the dataset grows, some of the queries the frontend depends on will take several seconds to return. Design for that reality, not the seed-data reality.
-
-4. **One codebase.** Frontend and backend live in the same repo and should feel like one cohesive system.
 
 Beyond that, you have full freedom on architecture, structure, libraries, and what you choose to focus on or skip.
 
